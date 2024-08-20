@@ -5,10 +5,11 @@ import (
 )
 
 const (
-	listenAddress  = "listen.address"
-	listenPort     = "listen.port"
-	pkcs12Path     = "keystore.path"
-	pkcs12Password = "keystore.password"
+	listenAddress    = "listen.address"
+	listenPort       = "listen.port"
+	listenInetFamily = "listen.inetfamily"
+	pkcs12Path       = "keystore.path"
+	pkcs12Password   = "keystore.password"
 )
 
 type viperConfig struct {
@@ -26,6 +27,7 @@ func NewViperConfig() *viperConfig {
 func (c *viperConfig) setDefaults() {
 	c.viper.SetDefault(listenAddress, "0.0.0.0")
 	c.viper.SetDefault(listenPort, "1234")
+	c.viper.SetDefault(listenInetFamily, "ip4")
 	c.viper.SetDefault(pkcs12Path, "keystore.p12")
 	c.viper.SetDefault(pkcs12Password, "password")
 }
@@ -50,4 +52,12 @@ func (c *viperConfig) GetPKCS12Password() string {
 // Gets the listen address
 func (c *viperConfig) GetListenAddress() string {
 	return c.viper.GetString(listenAddress)
+}
+
+func (c *viperConfig) GetListenPort() uint16 {
+	return c.viper.GetUint16(listenPort)
+}
+
+func (c *viperConfig) GetInetFamily() string {
+	return c.viper.GetString(listenInetFamily)
 }

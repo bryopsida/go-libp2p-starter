@@ -1,4 +1,4 @@
-package libp2p
+package mesh
 
 import (
 	"github.com/libp2p/go-libp2p/core/host"
@@ -21,7 +21,6 @@ func initMDNS(peerhost host.Host, rendezvous string) chan peer.AddrInfo {
 	n := &discoveryNotifee{}
 	n.PeerChan = make(chan peer.AddrInfo)
 
-	// An hour might be a long long period in practical applications. But this is fine for us
 	ser := mdns.NewMdnsService(peerhost, rendezvous, n)
 	if err := ser.Start(); err != nil {
 		panic(err)
