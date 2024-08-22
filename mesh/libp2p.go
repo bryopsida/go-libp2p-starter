@@ -4,10 +4,12 @@ import (
 	"context"
 	"crypto/rand"
 	"fmt"
+	"strings"
 
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p/core/crypto"
 	"github.com/libp2p/go-libp2p/core/host"
+	"github.com/libp2p/go-libp2p/core/pnet"
 )
 
 // exported functions are shared here
@@ -24,8 +26,9 @@ type ListenConfiguration struct {
 	InetFamily string
 }
 type MeshConfiguration struct {
-	EnableRelay bool
-	Insecure    bool
+	EnableRelay  bool
+	Insecure     bool
+	PreSharedKey string
 }
 
 type NetworkConfiguration struct {
@@ -57,7 +60,15 @@ func buildSecureOptions(config NetworkConfiguration) []libp2p.Option {
 	if config.MeshConfig.Insecure {
 		return []libp2p.Option{libp2p.NoSecurity}
 	}
-	return []libp2p.Option{}
+	// Load or generate a pre-shared key
+	psk, err := pnet.DecodeV1PSK(strings.NewReader(config.MeshConfig.PreSharedKey))
+	if err != nil {
+		panic(err)
+	}
+
+	return []libp2p.Option{
+		libp2p.PrivateNetwork(psk),
+	}
 }
 
 func buildRelayOptions(config NetworkConfiguration) []libp2p.Option {

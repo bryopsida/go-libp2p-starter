@@ -11,6 +11,15 @@ import (
 	golog "github.com/ipfs/go-log/v2"
 )
 
+func init() {
+	golog.SetAllLoggers(golog.LevelDebug) // Change to INFO for extra info
+	golog.SetupLogging(golog.Config{
+		Format: golog.ColorizedOutput,
+		Stdout: true,
+		Level:  golog.LevelDebug,
+	})
+}
+
 func main() {
 	// goals
 
@@ -22,7 +31,6 @@ func main() {
 	// 6) support using s3 buckets for bootstraping
 	// 7) support pre-shared key bootstraping for secure networks
 
-	golog.SetAllLoggers(golog.LevelInfo) // Change to INFO for extra info
 	logger := golog.Logger("main")
 	ctx, cancel := context.WithCancel(context.Background())
 	cfg := config.NewViperConfig()
@@ -37,6 +45,13 @@ func main() {
 			Port:       cfg.GetListenPort(),
 			Address:    cfg.GetListenAddress(),
 			InetFamily: cfg.GetInetFamily(),
+		},
+		MeshConfig: mesh.MeshConfiguration{
+			EnableRelay: true,
+			Insecure:    false,
+			PreSharedKey: `/key/swarm/psk/1.0.0/
+/base16/
+0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`,
 		},
 		IdentityConfig: mesh.IdentityConfiguration{
 			PrivateKey: nil,
