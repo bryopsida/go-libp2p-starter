@@ -163,6 +163,8 @@ github.com/libp2p/go-libp2p v0.37.2 h1:Irh+n9aDPTLt9wJYwtlHu6AhMUipbC1cGoJtOiBqI
 github.com/libp2p/go-libp2p v0.37.2/go.mod h1:M8CRRywYkqC6xKHdZ45hmqVckBj5z4mRLIMLWReypz8=
 github.com/libp2p/go-libp2p v0.38.0 h1:YrlRHoQC1pzin2yYRs0LunQIVBohvbj6i/UlwhA+Yf8=
 github.com/libp2p/go-libp2p v0.38.0/go.mod h1:QWV4zGL3O9nXKdHirIC59DoRcZ446dfkjbOJ55NEWFo=
+github.com/libp2p/go-libp2p v0.38.1 h1:aT1K7IFWi+gZUsQGCzTHBTlKX5QVZQOahng8DnOr6tQ=
+github.com/libp2p/go-libp2p v0.38.1/go.mod h1:QWV4zGL3O9nXKdHirIC59DoRcZ446dfkjbOJ55NEWFo=
 github.com/libp2p/go-libp2p-asn-util v0.4.1 h1:xqL7++IKD9TBFMgnLPZR6/6iYhawHKHl950SO9L6n94=
 github.com/libp2p/go-libp2p-asn-util v0.4.1/go.mod h1:d/NI6XZ9qxw67b4e+NgpQexCIiFYJjErASrYW4PFDN8=
 github.com/libp2p/go-libp2p-core v0.20.1 h1:fQz4BJyIFmSZAiTbKV8qoYhEH5Dtv/cVhZbG3Ib/+Cw=
