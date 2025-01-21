@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/ipfs/go-log/v2 v2.5.1
-	github.com/libp2p/go-libp2p v0.38.1
+	github.com/libp2p/go-libp2p v0.38.2
 	github.com/spf13/viper v1.19.0
 )
 
